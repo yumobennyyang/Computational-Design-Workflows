@@ -1,5 +1,10 @@
-// This function changes the text inside the paragraph when called
+// Wait for the whole page to load before adding the event listener
+window.onload = function() {
+    // Find the button by its ID and add a click event
+    document.getElementById('changeButton').addEventListener('click', changeText);
+};
+
+// Function that changes the text
 function changeText() {
-    // Find the paragraph with ID 'demo' and change its text content
     document.getElementById('demo').textContent = 'You clicked the button!';
 }
