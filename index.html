@@ -1,4 +1,4 @@
-<!-- Basic HTML structure -->
+<!-- Basic HTML structure
 <!DOCTYPE html>                    <!-- Declares this is an HTML5 document -->
 <html lang="en">                   <!-- Root element, lang="en" specifies English language -->
 <head>                             <!-- Contains metadata about the page (not visible) -->
@@ -14,4 +14,29 @@
 
 <!-- Interactive elements with IDs for JavaScript -->
 <button id="demoButton">Click Me!</button>  <!-- Clickable button with unique ID for JavaScript -->
-<div id="messageDisplay"></div>            <!-- Empty container div with ID for JavaScript to fill -->
+<div id="messageDisplay"></div>            Empty container div with ID for JavaScript to fill -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Demo Website</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page heading -->
+    <h1>Hello, World!</h1>
+
+    <!-- Paragraph that will change when the button is clicked -->
+    <p id="demo">This text will change when you click the button.</p>
+
+    <!-- Button that triggers a JavaScript function -->
+    <button onclick="changeText()">Click Me</button>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+
