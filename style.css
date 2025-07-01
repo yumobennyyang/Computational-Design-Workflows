@@ -2,7 +2,7 @@
 
 body {                              /* Target the entire page body */
   font-family: 'Roboto', sans-serif;  /* Set the font to Roboto, with sans-serif as backup */
-  background-color: #ffffff;          /* Set background color to white */
+  background-color: #f5f5f5;          /* Set background color to white */
   color: #111;                        /* Set text color to dark gray (almost black) */
   margin: 0;                          /* Remove default spacing around the body */
   padding: 0;                         /* Remove default internal spacing */
@@ -14,31 +14,37 @@ main {                               /* Target the main content area */
   padding: 0 20px;                    /* Add 20px left/right padding, no top/bottom */
 }
 
-.section-title {                      /* Target elements with class="section-title" */
-  font-weight: 700;                   /* Make the text bold */
-  text-transform: uppercase;          /* Convert text to all capital letters */
-  margin-top: 40px;                   /* Add 40 pixels of space above this element */
-  margin-bottom: 12px;                /* Add 12 pixels of space below this element */
-  font-size: 14px;                    /* Set font size to 14 pixels */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.3;
 }
 
-button {                              /* Target all button elements */
-  background-color: #111;             /* Set button background to dark gray */
-  color: white;                       /* Set button text color to white */
-  border: none;                       /* Remove the default button border */
-  padding: 12px 24px;                 /* Add 12px top/bottom, 24px left/right spacing inside */
-  cursor: pointer;                    /* Change mouse cursor to hand when hovering over button */
-  transition: background-color 0.3s;  /* Smooth color change animation (0.3 seconds) */
+.header-container {
+    background-color:#f5f5f5;
+    position: sticky;
+    top: 0px;
+    padding-top: 20px;
+    border-bottom: #eee solid 0px;
+    background: #f5f5f5;
+    z-index:100;
 }
 
-button:hover {                        /* Apply styles when user hovers over button */
-  background-color: #333;             /* Change background to lighter gray on hover */
+.subheader {
+    margin-top: 20px;
+    position: sticky;
+    top: 58px;
+    background: #f5f5f5;
+    z-index:100;
+    padding-bottom: 10px;
 }
 
-#messageDisplay {                     /* Target element with id="messageDisplay" */
-  margin-top: 20px;                   /* Add 20 pixels of space above this element */
-  padding: 16px;                      /* Add 16 pixels of spacing inside the element */
-  border: 1px solid #ccc;             /* Add a light gray border around the element */
-  background-color: #f9f9f9;          /* Set background color to very light gray */
-  min-height: 20px;                   /* Set minimum height so the area is visible even when empty */
+.disabled, .Lorem {
+    opacity: 0.3;                  
+}
+
+.disabled:hover {
+        opacity: 1;
+
 }
