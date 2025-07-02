@@ -1,50 +1,293 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');  /* Import Google Fonts */
 
-body {                              /* Target the entire page body */
-  font-family: 'Roboto', sans-serif;  /* Set the font to Roboto, with sans-serif as backup */
-  background-color: #f5f5f5;          /* Set background color to white */
-  color: #111;                        /* Set text color to dark gray (almost black) */
-  margin: 0;                          /* Remove default spacing around the body */
-  padding: 0;                         /* Remove default internal spacing */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #000;
+  margin: 0;
+  padding: 0;
+
 }
 
-main {                               /* Target the main content area */
-  max-width: 800px;                   /* Limit the maximum width to 800 pixels */
-  margin: 60px auto;                  /* Add 60px top/bottom margin, center horizontally */
-  padding: 0 20px;                    /* Add 20px left/right padding, no top/bottom */
+main {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    opacity: 0.3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.3;
 }
 
 .header-container {
-    background-color:#f5f5f5;
-    position: sticky;
-    top: 0px;
-    padding-top: 20px;
-    border-bottom: #eee solid 0px;
-    background: #f5f5f5;
-    z-index:100;
+  background-color: #f5f5f5  ;
+  position: sticky;
+  top: 0px;
+  padding-top: 20px;
+  z-index: 100;
 }
 
 .subheader {
-    margin-top: 20px;
-    position: sticky;
-    top: 58px;
-    background: #f5f5f5;
-    z-index:100;
-    padding-bottom: 10px;
-}
-
-.disabled, .Lorem {
-    opacity: 0.3;                  
-}
-
-.disabled:hover {
-        opacity: 1;
+  margin-top: 20px;
+  position: sticky;
+  top: 58px;
+  background-color: #f5f5f5  ;
+  z-index: 100;
+  padding-bottom: 10px;
+  color: #ff3800;
 
 }
+
+.content {
+  z-index: 0;
+}
+
+.accordion {
+  margin-bottom: 0px;
+}
+
+.accordion-title {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  text-align: left;
+  padding-left: 1.6px;
+}
+
+.accordion-title:hover,
+.accordion-item.active .accordion-title {
+  opacity: 1;
+}
+
+.accordion .arrow {
+  display: inline-block;
+  margin-right: 5px;
+  transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1);
+
+}
+
+.arrow {
+  opacity: 1 !important;
+  transform: rotate(-450deg);
+}
+
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding-left: 17px;
+  font-size: small;
+}
+
+
+.info{
+
+  padding: 10px 0;
+}
+.accordion-item.active .accordion-content {
+  opacity: 1;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+  font-weight: normal !important;
+  font-size: small;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+th {
+  font-weight: normal !important;
+  padding: 0;
+}
+
+td {
+  border-top: 0.5px solid #ababab;
+  padding: 0;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #ff3800;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+
+a::after {
+  content: '↓';
+  display: inline-block;
+  font-size: 0.8em;
+  transform: rotate(225deg);
+}
+
+
+#bottom-image {
+
+  mix-blend-mode: darken;
+  opacity: 0.5;
+  margin-top: 50px;
+
+}
+
+.blocker {
+  min-height: calc(100vh - 350px);
+}
+
+
+
+
+
+
+.gradient {
+  position: fixed;
+
+  top: 0px;
+  pointer-events: none;
+  width: 100vw;
+  z-index: 10;
+
+}
+
+.gradient-blur {
+  inset: 0;
+  height: 87px;
+}
+
+.gradient-blur>div,
+.gradient-blur::before,
+.gradient-blur::after {
+  position: absolute;
+  inset: 0;
+}
+
+.gradient-blur::before {
+  content: "";
+  z-index: 1;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 1)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 1)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 12.5%,
+      rgba(0, 0, 0, 1) 25%,
+      rgba(0, 0, 0, 1) 37.5%);
+}
+
+.gradient-blur>div:nth-of-type(1) {
+  z-index: 2;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 2)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 2)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 12.5%,
+      rgba(0, 0, 0, 1) 25%,
+      rgba(0, 0, 0, 1) 37.5%,
+      rgba(0, 0, 0, 1) 50%);
+}
+
+.gradient-blur>div:nth-of-type(2) {
+  z-index: 3;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 3)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 3)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 25%,
+      rgba(0, 0, 0, 1) 37.5%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 62.5%);
+}
+
+.gradient-blur>div:nth-of-type(3) {
+  z-index: 4;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 4)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 4)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 37.5%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 62.5%,
+      rgba(0, 0, 0, 1) 75%);
+}
+
+.gradient-blur>div:nth-of-type(4) {
+  z-index: 5;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 5)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 5)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 1) 62.5%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 1) 87.5%);
+}
+
+.gradient-blur>div:nth-of-type(5) {
+  z-index: 6;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 6)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 6)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 62.5%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 1) 100%);
+}
+
+.gradient-blur>div:nth-of-type(6) {
+  z-index: 7;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 7)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 7)));
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 1) 100%);
+}
+
+.gradient-blur::after {
+  content: "";
+  z-index: 8;
+  backdrop-filter: blur(calc(0.5px * pow(1.5, 8)));
+  -webkit-backdrop-filter: blur(calc(0.5px * pow(1.5, 8)));
+
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 87.5%,
+      rgba(0, 0, 0, 1) 100%);
+}
+
+
+.gradient-background {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 87px;
+  bbackground-image: linear-gradient(to bottom,
+
+      hsla(240, 20%, 96%, calc(1 * 1.000)) 0%,
+      hsla(240, 20%, 96%, calc(1 * 0.738)) 19%,
+      hsla(240, 20%, 96%, calc(1 * 0.541))34%,
+      hsla(240, 20%, 96%, calc(1 * 0.382))47%,
+      hsla(240, 20%, 96%, calc(1 * 0.278)) 56.5%,
+      hsla(240, 20%, 96%, calc(1 * 0.194)) 65%,
+      hsla(240, 20%, 96%, calc(1 * 0.126)) 73%,
+      hsla(240, 20%, 96%, calc(1 * 0.075)) 80.2%,
+      hsla(240, 20%, 96%, calc(1 * 0.042)) 86.1%,
+      hsla(240, 20%, 96%, calc(1 * 0.021)) 91%,
+      hsla(240, 20%, 96%, calc(1 * 0.008)) 95.2%,
+      hsla(240, 20%, 96%, calc(1 * 0.002)) 98.2%,
+      hsla(240, 20%, 96%, calc(1 * 0)) 100%);
+
+  background-image: linear-gradient(to bottom,
+
+      hsla(240, 20%, 96%, calc(1 * 1.000)) 0%,
+      hsla(240, 20%, 96%, calc(1 * 0)) 100%);
+
+
+}
+
+
