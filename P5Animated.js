@@ -1,4 +1,10 @@
-import p5 from 'https://cdn.skypack.dev/p5';
+function setup() {
+    const canvas = createCanvas(document.getElementById('p5-canvas-1').offsetWidth, 400);
+    canvas.parent('p5-canvas-1');
+    noLoop();
+    noStroke();
+    background('#f4f4f4');
+}
 
 new p5((p) => {
     let circles = [];
