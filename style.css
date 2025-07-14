@@ -266,7 +266,7 @@ a::after {
   left: 0;
   right: 0;
   height: 87px;
-  bbackground-image: linear-gradient(to bottom,
+  background-image: linear-gradient(to bottom,
 
       hsla(240, 20%, 96%, calc(1 * 1.000)) 0%,
       hsla(240, 20%, 96%, calc(1 * 0.738)) 19%,
