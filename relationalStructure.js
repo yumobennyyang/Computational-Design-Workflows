@@ -86,7 +86,7 @@ var graphSketch3 = function () {
       .selectAll('line')
       .data(links)
       .enter().append('line')
-      .attr('marker-end', d => d.type === 'url(#arrowhead-default)');
+      .attr('marker-end', 'url(#arrowhead-default)');
 
     const node = g.append('g')
       .attr('stroke', '#555')
