@@ -1,3 +1,6 @@
+
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
 var graphSketch3 = function () {
   const width = 800;
   const height = 400;

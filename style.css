@@ -300,5 +300,6 @@ a::after {
   margin-bottom: 40px;
   border-radius: 8px;
   overflow: hidden;
-  background: #eaeaea;
+  background-color:#fff;
+
 }
