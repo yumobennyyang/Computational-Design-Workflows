@@ -1,5 +1,4 @@
 
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 var graphSketch3 = function () {
   const width = 800;
@@ -87,7 +86,7 @@ var graphSketch3 = function () {
       .selectAll('line')
       .data(links)
       .enter().append('line')
-      .attr('marker-end', d => d.type === 'directed' ? 'url(#arrowhead-default)' : null);
+      .attr('marker-end', d => d.type === 'url(#arrowhead-default)');
 
     const node = g.append('g')
       .attr('stroke', '#555')
@@ -167,9 +166,9 @@ var graphSketch3 = function () {
         );
 
       tooltip.transition().duration(200).style('opacity', 1);
-      tooltip.html(`${d.role}`)
-        .style('left', (event.pageX + 10) + 'px')
-        .style('top', (event.pageY - 10) + 'px');
+      // tooltip.html(`${d.role}`)
+      //   .style('left', (event.pageX + 10) + 'px')
+      //   .style('top', (event.pageY - 10) + 'px');
     })
       .on('mouseout', () => {
         link
@@ -289,41 +288,3 @@ graphSketch3();
 
 
 
-
-
-// ============================================================================
-// LEGEND
-// ============================================================================
-
-const legend = svg.append('g')
-  .attr('class', 'legend')
-  .attr('transform', 'translate(20, 20)');  // Position top-left corner
-
-const legendData = [
-  { label: 'Person', color: '#1f77b4' },
-  { label: 'Paper', color: '#ff7f0e' },
-  { label: 'System', color: '#2ca02c' },
-  { label: 'Language', color: '#d62728' },
-  { label: 'Concept', color: '#9467bd' },
-  { label: 'Application', color: '#8c564b' }
-];
-
-legend.selectAll('rect')
-  .data(legendData)
-  .enter()
-  .append('rect')
-  .attr('x', 0)
-  .attr('y', (d, i) => i * 22)
-  .attr('width', 16)
-  .attr('height', 16)
-  .attr('fill', d => d.color);
-
-legend.selectAll('text')
-  .data(legendData)
-  .enter()
-  .append('text')
-  .attr('x', 22)
-  .attr('y', (d, i) => i * 22 + 12)
-  .attr('font-size', 12)
-  .attr('fill', '#fff')
-  .text(d => d.label);
