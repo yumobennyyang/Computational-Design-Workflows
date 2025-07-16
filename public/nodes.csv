@@ -1,0 +1,21 @@
+id,name,role,size,color
+licklider,J.C.R. Licklider,person,32,#ff3800
+symbiosis,Man-Computer Symbiosis,concept,18,#8C9D29
+sketchpad,Sketchpad,system,28,#631762
+sutherland,Ivan Sutherland,person,32,#ff3800
+kay,Alan Kay,person,32,#ff3800
+smalltalk,Smalltalk,language,24,#1F7F92
+logo,LOGO,language,24,#1F7F92
+papert,Seymour Papert,person,32,#ff3800
+oop,OOP,concept,18,#8C9D29
+gui,GUI,concept,18,#8C9D29
+cad,CAD,concept,18,#8C9D29
+interaction,User Interaction,concept,18,#8C9D29
+alto,Xerox Alto,system,28,#631762
+catia,CATIA,application,22,#848484
+autocad,AutoCAD,application,22,#848484
+proe,Pro/ENGINEER,application,22,#848484
+solidworks,SolidWorks,application,22,#848484
+rhino,Rhino,application,22,#848484
+blender,Blender,application,22,#848484
+processing,Processing,language,22,#1F7F92
