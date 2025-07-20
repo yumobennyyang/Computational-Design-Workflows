@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 </head>
 
 <body>
@@ -52,16 +54,16 @@
                         Object 01 - Spatial Canvases</div>
                     <div class="accordion-content">
                         <div class="info">
-                            <!-- Three.js Canvas 1: Orbiting Camera Composition -->
+
                             <div id="three-canvas-1" class="canvas-block"></div>
 
-                            <!-- Three.js Canvas 2: Material + Fog Composition -->
+
                             <div id="three-canvas-2" class="canvas-block"></div>
 
-                            <!-- p5.js Canvas 1: 2D Static Composition -->
+
                             <div id="p5-canvas-1" class="canvas-block"></div>
 
-                            <!-- p5.js Canvas 2: Interactive / Animated Composition -->
+
                             <div id="p5-canvas-2" class="canvas-block"></div>
                         </div>
                     </div>
@@ -112,7 +114,16 @@
                         Object 04 - Geo-Spatial Structures</div>
                     <div class="accordion-content">
                         <div class="info">
-                            Coming soon...
+
+
+                            Noise levels in Downtown Manhattan, fetched from 311 Noise Complaints from 2010 to 2025. The average number of complaints during each hour is normalized with a recency weight and a time weight to create the final visualization. The recency weight places more emphasis on recent complaints, while the time weight adjusts for natural fluctuations in complaint volume across the day. Since complaint activity peaks during nighttime hours—especially when people are trying to sleep—the time weight helps correct for this bias, ensuring that higher complaint counts at night don’t automatically imply louder environments. This creates a more balanced, time-aware view of urban noise patterns.
+                            <br><br>
+                            <div class="canvas-block" id="mapbox-container-1">
+                                <div id="time-slider-container">
+                                    <input type="range" min="0" max="47" value="24" id="timeSlider" />
+                                    <span id="timeLabel">12:00 PM</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,8 +270,12 @@
                         </p>
                         <p>Qui unde dolorum rem repellendus provident ut molestiae eligendi? Et voluptatem dicta qui
                             odit voluptas ut dignissimos iure. </p>
+
+
                     </div>
+
                 </div>
+
 
             </div>
 
@@ -283,6 +298,9 @@
     <script type="module" src="./p5Animated.js"></script>
     <script type="module" src="./temporalStructure.js"></script>
     <script type="module" src="./relationalStructure.js"></script>
+    <script type="module" src="./geoSpatialStructure.js"></script>
+
+
 
 
 

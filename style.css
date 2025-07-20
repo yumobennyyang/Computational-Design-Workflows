@@ -297,9 +297,70 @@ a::after {
 .canvas-block {
   width: 100%;
   height: 400px;
-  margin-bottom: 40px;
-  border-radius: 8px;
+  margin-bottom: 6px;
   overflow: hidden;
   background-color:#fff;
 
+}
+
+
+#mapbox-container-1 {
+  position: relative;
+  height: 430px;
+  clip-path: inset(0px 0px 30px 0px);
+  margin-bottom: -24px;
+}
+
+
+/* Time slider styling */
+#time-slider-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 0px 2px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+}
+
+#time-slider-container input[type="range"] {
+  appearance: none;
+  width: 160px;
+  height: 2.5px;
+  background: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#time-slider-container input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  background: black;
+  border-radius: 50%;
+  border: none;
+}
+
+#time-slider-container input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  background: black;
+  border-radius: 50%;
+  border: none;
+}
+
+#time-slider-container span {
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+.mapboxgl-ctrl-scale {
+  background-color: rgba(255, 255, 255, 0) !important;
 }
