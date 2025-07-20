@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Computational Design Workflows</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -32,8 +35,8 @@
 
         <div class="subheader">ARCHA4163 COMPUTATIONAL DESIGN WORKFLOW</div>
 
-        <div class="gradient gradient-background"></div>
-        <div class="gradient gradient-blur">
+        <div class="hidden gradient gradient-background"></div>
+        <div class="hidden gradient gradient-blur">
             <div></div>
             <div></div>
             <div></div>
@@ -116,8 +119,17 @@
                         <div class="info">
 
 
-                            Noise levels in Downtown Manhattan, fetched from 311 Noise Complaints from 2010 to 2025. The average number of complaints during each hour is normalized with a recency weight and a time weight to create the final visualization. The recency weight places more emphasis on recent complaints, while the time weight adjusts for natural fluctuations in complaint volume across the day. Since complaint activity peaks during nighttime hours—especially when people are trying to sleep—the time weight helps correct for this bias, ensuring that higher complaint counts at night don’t automatically imply louder environments. This creates a more balanced, time-aware view of urban noise patterns.
+                            Noise levels in Downtown Manhattan, sourced from 519,200 noise complaints received by NYC311
+                            from 2010 to 2025. The average number of complaints during each hour is normalized with a
+                            recency weight and a time weight to create the final visualization. The recency weight
+                            places more emphasis on recent complaints, while the time weight adjusts for natural
+                            fluctuations in complaint volume across the day. Since complaint activity peaks during
+                            nighttime hours—especially when people are trying to sleep—the time weight helps correct for
+                            this bias, ensuring that higher complaint counts at night don’t automatically imply louder
+                            environments. This creates a more balanced, time-aware view of urban noise patterns.
                             <br><br>
+
+
                             <div class="canvas-block" id="mapbox-container-1">
                                 <div id="time-slider-container">
                                     <input type="range" min="0" max="47" value="24" id="timeSlider" />
@@ -197,85 +209,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-
-            <div class="accordion">
-
-                <div class="accordion-item">
-                    <div class="accordion-title" onclick="toggleAccordion(this)"><span class="arrow">↓</span>Lorem Ipsum
-                    </div>
-                    <div class="accordion-content">
-                        <p>Lorem ipsum dolor sit amet. Sit numquam architecto et dignissimos repudiandae sed aspernatur
-                            aliquid ut eaque reiciendis est laborum velit est voluptates numquam aut harum laboriosam.
-                            Sit
-                            commodi autem eos deserunt voluptatem eum autem internos At consectetur delectus et nesciunt
-                            quibusdam ut
-                            fugit voluptatibus est minima asperiores. </p>
-                        <p>Est dignissimos unde sit eligendi magni ex velit tempora eos aliquam Quis hic recusandae
-                            dolores At quia molestiae. Eos voluptatem dolor qui consectetur atque aut vitae dicta sed
-                            galisum
-                            corrupti ea voluptatem debitis. Aut quibusdam deserunt non temporibus praesentium ut quas
-                            illum rem quia
-                            reprehenderit. Ab laudantium pariatur eos expedita vitae ea sunt ipsam in omnis maxime. </p>
-                        <p>Qui pariatur fugit cum temporibus veniam in voluptatem nostrum! Qui nihil consequuntur aut
-                            tenetur enim sed rerum repudiandae! Nam excepturi reprehenderit qui corporis voluptatem sed
-                            odit
-                            recusandae ut debitis magnam et sapiente necessitatibus vel omnis doloribus. Et officia sint
-                            eos
-                            molestiae dolor et molestias perspiciatis quo veniam repellat id saepe galisum eum debitis
-                            dolorum et
-                            rerum pariatur? </p>
-                        <p>Qui esse vero et neque quod ea laborum facere ad nesciunt maxime aut nemo possimus vel enim
-                            sint ut culpa odio? Eum vero autem id exercitationem placeat ut quibusdam laboriosam qui
-                            enim animi
-                            est voluptatem saepe aut reiciendis ipsam. Et nihil nihil non totam praesentium aut
-                            consequatur
-                            excepturi aut fuga ducimus id iste corrupti ut laudantium vitae. Non facilis fugiat eos
-                            eligendi vitae est voluptatem incidunt qui tempore numquam nam sint modi aut quis quasi quo
-                            blanditiis odit?
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="accordion">
-
-                <div class="accordion-item">
-                    <div class="accordion-title" onclick="toggleAccordion(this)"><span class="arrow">↓</span>Lorem Ipsum
-                    </div>
-                    <div class="accordion-content">
-                        <p>Lorem Ipsum est dolores corporis ut quam eius qui magni mollitia et quisquam atque. Ut fugit
-                            numquam 33 iste provident sed voluptas commodi rem asperiores perspiciatis. Non velit
-                            accusantium non neque porro et doloribus deleniti et quis explicabo sed error laborum rem
-                            porro nulla. </p>
-                        <p>Eum assumenda voluptas est molestias consectetur id sapiente facere ut expedita molestias 33
-                            dicta aliquid et praesentium accusantium et ipsam quas. Aut omnis optio non amet autem in
-                            voluptatem omnis. Et quia dolor aut quod deserunt aut voluptatem ipsa et quos exercitationem
-                            et sapiente sunt.
-                        </p>
-                        <p>Et necessitatibus exercitationem non velit recusandae non quas modi et quibusdam velit et
-                            quidem dolor ut voluptatem ipsum a rerum excepturi! Et fuga voluptatum nam recusandae vero
-                            cum
-                            ullam illum ut aliquid laboriosam sed ipsam corrupti hic facere earum. Aut dolorem suscipit
-                            ut atque
-                            ipsa id blanditiis maxime. </p>
-                        <p>In voluptas minus non quas magnam id facere aspernatur. Sed dolores reprehenderit eum commodi
-                            quod qui voluptatem reiciendis a galisum unde aut tempore optio id galisum corporis. </p>
-                        <p>Vel dolorem sint ut maxime maiores rem voluptate eius quo dolorem nobis. Est quam explicabo
-                            quo eligendi deserunt eos quisquam architecto ut dolor dolorum aut aspernatur illo ut saepe
-                            facere est internos omnis. Cum voluptatem saepe sit beatae fugit hic deleniti accusamus.
-                        </p>
-                        <p>Qui unde dolorum rem repellendus provident ut molestiae eligendi? Et voluptatem dicta qui
-                            odit voluptas ut dignissimos iure. </p>
-
-
-                    </div>
-
-                </div>
-
 
             </div>
 
