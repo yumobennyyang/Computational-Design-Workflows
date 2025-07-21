@@ -89,7 +89,7 @@ var mapboxSketch = function () {
     map.on('load', () => {
         console.log('Map loaded successfully!');
 
-        fetch("311%20Noise%20Complaints_20250720.geojson")
+        fetch("noise_complaints.geojson")
             .then((response) => {
                 console.log("Fetched:", response);
                 if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
