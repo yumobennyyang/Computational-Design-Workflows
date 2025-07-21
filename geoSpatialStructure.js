@@ -81,7 +81,7 @@ var mapboxSketch = function () {
     // Scale control: shows the map scale (how many meters/pixels)
     // This helps users understand distances on the map
     map.addControl(new mapboxgl.ScaleControl({
-        maxWidth: 80,        // Maximum width of the scale bar
+        maxWidth: 80,        // Maximum width of the scale bara
         unit: 'metric'       // Use meters/kilometers instead of feet/miles
     }), 'bottom-left');
 
@@ -89,21 +89,13 @@ var mapboxSketch = function () {
     map.on('load', () => {
         console.log('Map loaded successfully!');
 
-        fetch("noise_complaints.geojson")
+        fetch("public/noise_complaints.geojson")
             .then((response) => {
                 console.log("Fetched:", response);
                 if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
                 return response.text(); // TEMP: read as text to debug
             })
-            .then(text => {
-                console.log("Received file contents:");
-                console.log(text.slice(0, 500)); // show beginning
-                const json = JSON.parse(text); // parse manually
-                // continue using json...
-              })
-              .catch(err => {
-                console.error("❌ Failed to load GeoJSON:", err);
-              })
+
             .then((data) => {
                 const rawNoiseData = data.features.filter(f => f.geometry);
 
