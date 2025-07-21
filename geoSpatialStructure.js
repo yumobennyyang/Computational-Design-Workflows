@@ -81,23 +81,24 @@ var mapboxSketch = function () {
     // Scale control: shows the map scale (how many meters/pixels)
     // This helps users understand distances on the map
     map.addControl(new mapboxgl.ScaleControl({
-        maxWidth: 80,        // Maximum width of the scale bara
+        maxWidth: 80,        // Maximum width of the scale bar
         unit: 'metric'       // Use meters/kilometers instead of feet/miles
     }), 'bottom-left');
 
 
     map.on('load', () => {
+        // This code only runs after the map has finished loading
         console.log('Map loaded successfully!');
 
-        fetch("public/noise_complaints.geojson")
-            .then((response) => {
-                console.log("Fetched:", response);
-                if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
-                return response.text(); // TEMP: read as text to debug
-            })
 
+
+
+        let rawNoiseData;
+
+        fetch("./public/noise_complaints.geojson")
+            .then((response) => response.json())
             .then((data) => {
-                const rawNoiseData = data.features.filter(f => f.geometry);
+                rawNoiseData = data.features.filter(f => f.geometry);
 
                 // Step 1: Count complaints per 30-min interval (48 buckets)
                 let intervalCounts = new Array(48).fill(0);
@@ -140,56 +141,75 @@ var mapboxSketch = function () {
                     },
                 });
 
-                // Step 3: Initial heatmap
-                updateHeatmap(24); // noon
 
-                // Step 4: Time slider event
+                // Step 3: Initialize and hook slider
+                updateHeatmap(24, intervalCounts, maxIntervalCount); // noon
+
                 document.getElementById("timeSlider").addEventListener("input", (e) => {
-                    updateHeatmap(parseInt(e.target.value));
+                    updateHeatmap(parseInt(e.target.value), intervalCounts, maxIntervalCount);
                 });
-
-                // Step 5: Heatmap update function
-                function updateHeatmap(interval) {
-                    const hour = Math.floor(interval / 2);
-                    const minute = interval % 2 === 0 ? "00" : "30";
-                    const ampm = hour < 12 ? "AM" : "PM";
-                    const labelHour = hour % 12 === 0 ? 12 : hour % 12;
-                    document.getElementById("timeLabel").textContent = `${labelHour}:${minute} ${ampm}`;
-
-                    const now = new Date("2025-07-20");
-
-                    const filtered = rawNoiseData
-                        .map(f => {
-                            const ts = parseDate(f.properties.created_date);
-                            if (!ts) return null;
-                            const tsInterval = ts.getHours() * 2 + Math.floor(ts.getMinutes() / 30);
-                            if (tsInterval !== interval) return null;
-
-                            const ageDays = (now - ts) / (1000 * 60 * 60 * 24);
-                            const recencyWeight = 1 / (1 + ageDays);
-                            const timeWeight = maxIntervalCount / intervalCounts[interval];
-
-                            f.properties.weight = recencyWeight * timeWeight;
-                            return f;
-                        })
-                        .filter(Boolean);
-
-                    map.getSource("noise-data").setData({
-                        type: "FeatureCollection",
-                        features: filtered
-                    });
-                }
-
-                function parseDate(dateStr) {
-                    // Parses "2025 Jul 19 01:48:33 AM"
-                    return new Date(Date.parse(dateStr.replace(/(\d{4} \w{3} \d{2}) (\d{2}:\d{2}:\d{2}) (AM|PM)/, "$1T$2 $3")));
-                }
-            })
-            .catch((err) => {
-                console.error("❌ Failed to load GeoJSON:", err);
             });
-    });
 
+
+
+        let intervalCounts = new Array(48).fill(0);
+
+        for (const f of rawNoiseData) {
+            const t = parseDate(f.properties.created_date);
+            if (t) {
+                const interval = t.getHours() * 2 + Math.floor(t.getMinutes() / 30);
+                intervalCounts[interval]++;
+            }
+        }
+
+        const maxIntervalCount = Math.max(...intervalCounts);
+
+        document.getElementById("timeSlider").addEventListener("input", (e) => {
+            updateHeatmap(parseInt(e.target.value), intervalCounts, maxIntervalCount);
+        });
+
+        function updateHeatmap(interval, intervalCounts, maxIntervalCount) {
+            const hour = Math.floor(interval / 2);
+            const minute = interval % 2 === 0 ? "00" : "30";
+            const ampm = hour < 12 ? "AM" : "PM";
+            const labelHour = hour % 12 === 0 ? 12 : hour % 12;
+            document.getElementById("timeLabel").textContent = `${labelHour}:${minute} ${ampm}`;
+
+            const now = new Date("2025-07-20");
+
+            const filtered = rawNoiseData
+                .map(f => {
+                    const ts = parseDate(f.properties.created_date);
+                    if (!ts) return null;
+                    const tsInterval = ts.getHours() * 2 + Math.floor(ts.getMinutes() / 30);
+                    if (tsInterval !== interval) return null;
+
+                    const ageDays = (now - ts) / (1000 * 60 * 60 * 24);
+                    const recencyWeight = 1 / (1 + ageDays);
+                    const timeWeight = maxIntervalCount / intervalCounts[interval];
+
+                    f.properties.weight = recencyWeight * timeWeight;
+                    return f;
+                })
+                .filter(Boolean);
+
+            map.getSource("noise-data").setData({
+                type: "FeatureCollection",
+                features: filtered
+            });
+
+
+
+        }
+
+
+
+
+        function parseDate(dateStr) {
+            // Parses "2025 Jul 19 01:48:33 AM"
+            return new Date(Date.parse(dateStr.replace(/(\d{4} \w{3} \d{2}) (\d{2}:\d{2}:\d{2}) (AM|PM)/, "$1T$2 $3")));
+        }
+    });
 
 
     console.log('Mapbox NYC Map initialized');
