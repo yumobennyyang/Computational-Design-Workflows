@@ -89,11 +89,21 @@ var mapboxSketch = function () {
     map.on('load', () => {
         console.log('Map loaded successfully!');
 
-        fetch("311 Noise Complaints_20250720.geojson")
+        fetch("311%20Noise%20Complaints_20250720.geojson")
             .then((response) => {
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                return response.json();
+                console.log("Fetched:", response);
+                if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
+                return response.text(); // TEMP: read as text to debug
             })
+            .then(text => {
+                console.log("Received file contents:");
+                console.log(text.slice(0, 500)); // show beginning
+                const json = JSON.parse(text); // parse manually
+                // continue using json...
+              })
+              .catch(err => {
+                console.error("❌ Failed to load GeoJSON:", err);
+              })
             .then((data) => {
                 const rawNoiseData = data.features.filter(f => f.geometry);
 
