@@ -60,7 +60,10 @@ var mapboxSketch = function () {
 
         // 'bearing' rotates the map
         // 0 = north at the top, 90 = east at the top, etc.
-        bearing: 0
+        bearing: 0,
+
+        minZoom: 10,
+        maxZoom: 18,
     });
 
 
