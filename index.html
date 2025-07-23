@@ -14,6 +14,13 @@
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+
+
 </head>
 
 <body>
@@ -148,7 +155,30 @@
                         Object 05 - Engagement Components</div>
                     <div class="accordion-content">
                         <div class="info">
-                            Coming soon...
+                            <div class="status" id="connection-status">
+                            </div>
+                            THREE ROADS IN FRONT OF YOU. NO PURPOSE, NO DESTINATION. WHICH ONE DO YOU CHOOSE?
+                            <br><br>
+                            <div class=" poll-container">
+                                <div class="choices">
+                                    <div class="choice" onclick="vote('a')">
+                                        <img src="./public/road1.jpeg" alt="Road A" />
+                                        <div class="choice-label">ROAD__A</div>
+                                        <div class="choice-vote"><span id="a-count">0</span> VOTES</div>
+                                    </div>
+                                    <div class="choice" onclick="vote('b')">
+                                        <img src="./public/road2.jpeg" alt="Road B" />
+                                        <div class="choice-label">ROAD__B</div>
+                                        <div class="choice-vote"><span id="b-count">0</span> VOTES</div>
+                                    </div>
+                                    <div class="choice" onclick="vote('c')">
+                                        <img src="./public/road3.jpeg" alt="Road C" />
+                                        <div class="choice-label">ROAD__C</div>
+                                        <div class="choice-vote"><span id="c-count">0</span> VOTES</div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -233,6 +263,7 @@
     <script type="module" src="./relationalStructure.js"></script>
     <script type="module" src="./geoSpatialStructure.js"></script>
 
+    <script src="./poll.js" defer></script>
 
 
 
