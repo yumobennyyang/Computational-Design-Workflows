@@ -3,8 +3,8 @@ import * as THREE from 'https://unpkg.com/three@0.157.0/build/three.module.js';
 function initMaterialFogScene(containerId) {
     const container = document.getElementById(containerId);
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xccccff, 5, 15);
-    scene.background = new THREE.Color(0xeeeeff);
+    scene.fog = new THREE.Fog(0xff006f, 5, 15);
+    scene.background = new THREE.Color(0x000000);
 
     const camera = new THREE.PerspectiveCamera(60, container.offsetWidth / 400, 0.1, 100);
     camera.position.set(4, 4, 8);
@@ -15,14 +15,14 @@ function initMaterialFogScene(containerId) {
     container.appendChild(renderer.domElement);
 
     // Lighting
-    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.5);
     const point = new THREE.PointLight(0xffccaa, 1.2, 100);
     point.position.set(3, 5, 3);
     scene.add(ambient, point);
 
     // Materials
     const metal = new THREE.MeshStandardMaterial({
-        color: 0x6699ff,
+        color: 0x000000,
         metalness: 0.8,
         roughness: 0.3
     });
@@ -35,7 +35,7 @@ function initMaterialFogScene(containerId) {
         transparent: true
     });
     const matte = new THREE.MeshStandardMaterial({
-        color: 0xff8855,
+        color: 0xffffff,
         roughness: 1.0,
         metalness: 0.0
     });

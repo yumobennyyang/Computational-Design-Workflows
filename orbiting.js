@@ -3,7 +3,7 @@ import * as THREE from 'https://unpkg.com/three@0.157.0/build/three.module.js';
 function initOrbitingScene(containerId) {
     const container = document.getElementById(containerId);
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf2f2f2);
+    scene.background = new THREE.Color(0x000000);
 
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / 400, 0.1, 1000);
     camera.position.set(5, 5, 5);
@@ -12,14 +12,14 @@ function initOrbitingScene(containerId) {
     renderer.setSize(container.offsetWidth, 400);
     container.appendChild(renderer.domElement);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-    dirLight.position.set(5, 5, 5);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(-5, 5, 5);
     scene.add(ambient, dirLight);
 
-    const material1 = new THREE.MeshStandardMaterial({ color: '#ff3e00' });
-    const material2 = new THREE.MeshStandardMaterial({ color: '#1d9bf0' });
-    const material3 = new THREE.MeshStandardMaterial({ color: '#ffb703' });
+    const material1 = new THREE.MeshStandardMaterial({ color: '#ff006f' });
+    const material2 = new THREE.MeshStandardMaterial({ color: '#dddddd' });
+    const material3 = new THREE.MeshStandardMaterial({ color: '#222222' });
 
     const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material1);
     const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), material2);

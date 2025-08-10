@@ -256,7 +256,7 @@ var graphSketch3 = function () {
     const legendData = [
       { label: 'Person', color: '#ff3800' },
       { label: 'Concept', color: '#8C9D29' },
-      { label: 'System', color: '#631762' },
+      { label: 'System', color: '#ff006f' },
       { label: 'Language', color: '#1F7F92' },
       { label: 'Application', color: '#848484' }
     ];

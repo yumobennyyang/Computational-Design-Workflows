@@ -14,7 +14,9 @@ d3.csv("./public/Processed_Arrest_Data.csv").then(data => {
         d.SEVERITY_SCORE = weightedScore / d.TOTAL; // 1 to 3
     });
 
-    const svg = d3.select("#temporal-structure");
+    const svg = d3.select("#temporal-structure")
+        .style("background-color", "#000"); // black background
+
     const width = svg.node().getBoundingClientRect().width;
     const height = +svg.attr("height");
     const margin = { top: 40, right: 20, bottom: 40, left: 50 };
@@ -31,7 +33,7 @@ d3.csv("./public/Processed_Arrest_Data.csv").then(data => {
 
     const colorScale = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.TOTAL)])
-        .range(["#f5f5f5", "#ff3800"]);
+        .range(["#000000", "#ff006f"]); // dark grey → pink for visibility
 
     const r = d3.scaleLinear()
         .domain([1, 3])
@@ -45,10 +47,10 @@ d3.csv("./public/Processed_Arrest_Data.csv").then(data => {
         .attr("r", d => r(d.SEVERITY_SCORE))
         .attr("fill", d => colorScale(d.TOTAL));
 
-
     const monthTicks = d3.range(0, 12).map(m =>
         +d3.timeFormat("%j")(new Date(2000, m, 1))
     );
+
     // X-axis
     svg.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
@@ -58,15 +60,12 @@ d3.csv("./public/Processed_Arrest_Data.csv").then(data => {
                 .tickFormat(d => d3.timeFormat("%b")(new Date(2000, 0, d)))
         )
         .selectAll("text")
-        .style("fill", "#000");
+        .style("fill", "#fff"); // white text
 
     // Y-axis
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y))
-        .selectAll("text").style("fill", "#000");
-
-        
+        .selectAll("text")
+        .style("fill", "#fff"); // white text
 });
-
-

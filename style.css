@@ -105,6 +105,8 @@ main {
   opacity: 1;
 }
 
+
+
 table {
   border-collapse: collapse;
   text-align: left;
@@ -491,6 +493,18 @@ a::after {
 }
 
 
+.responsive-stretch {
+  padding-top: 24px;
+  width: 100%;
+  height: 50vh;       /* tweak height as you like */
+}
+
+.responsive-stretch img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;        /* stretches to fit (distorts as needed) */
+  display: block;          /* removes inline-gap */
+}
 
 .poll-container {
   background-color: transparent;
